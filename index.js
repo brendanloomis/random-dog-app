@@ -1,5 +1,5 @@
-function getRandomDog() {
-    fetch('https://dog.ceo/api/breeds/image/random')
+function getRandomDog(num) {
+    fetch(`https://dog.ceo/api/breeds/image/random/${num}`)
         .then(response => response.json())
         .then(responseJson => console.log(responseJson));
 }
@@ -9,10 +9,8 @@ function handleForm() {
     $('form').submit(function(event) {
         event.preventDefault();
         let num = $('#quantity').val();
-        console.log(`Generating ${$('#quantity').val()} random dog pictures.`);
-        for (let i = 0; i < num; i++){
-            getRandomDog();
-        }
+        console.log(`Generating ${num} random dog pictures.`);
+        getRandomDog(num);
     });
 }
 
